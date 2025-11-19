@@ -1,8 +1,13 @@
+using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ContadorDeTags : MonoBehaviour
 {
-    
+    public Vector3 areaSize = new Vector3(1f, 1f, 1f);
+    public TextMeshPro countEr;
+    public TextMeshPro countAc;
     public enum TagSeleccion
     {
         TR1,
@@ -25,12 +30,53 @@ public class ContadorDeTags : MonoBehaviour
 
     public int ConteoActual => conteoActual;
     public bool SobreLimite => conteoActual >= maxObjetos;
+    private int conteoErroneo;
+    
 
     string TagComoString()
     {
         
         return tagAContar.ToString();
     }
+
+    private void Update()
+    {
+        if (conteoErroneo == 0)
+        {
+            GameManagers.Instancias.incorrectos = true;
+        }
+        else
+        {
+            GameManagers.Instancias.incorrectos = false;
+        }
+        VaciarBasurero();
+        countEr.text = conteoErroneo.ToString();
+        countAc.text = conteoActual.ToString();
+    }
+
+    
+
+    public void VaciarBasurero()
+    {
+        if(GameManagers.Instancias.incorrectos == false || GameManagers.Instancias.borrar)
+        {
+            Collider[] objetos = Physics.OverlapBox(transform.position, areaSize / 2f, Quaternion.identity);
+
+            foreach (Collider obj in objetos)
+            {
+                Destroy(obj.gameObject);
+            }
+        }
+        
+    }
+
+    // Para visualizar el área en el editor
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, areaSize);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -40,6 +86,10 @@ public class ContadorDeTags : MonoBehaviour
 
            
             Debug.Log($"Entró {other.name}. Conteo: {conteoActual}/{maxObjetos}");
+        }
+        else
+        {
+            conteoErroneo++;
         }
     }
 
@@ -53,5 +103,11 @@ public class ContadorDeTags : MonoBehaviour
            
             Debug.Log($"Salió {other.name}. Conteo: {conteoActual}/{maxObjetos}");
         }
+        else
+        {
+            conteoErroneo--;
+            if (conteoErroneo < 0) conteoErroneo = 0;
+        }
     }
+    
 }
