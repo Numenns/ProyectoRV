@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: acedd370387f011459af737b8f7354a7, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e0c1e3e7afd21f46a30060fe436a90e, type: 2}
     - target: {fileID: 919132149155446097, guid: acedd370387f011459af737b8f7354a7, type: 3}
       propertyPath: m_Name
       value: door (1)
