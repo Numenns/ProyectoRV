@@ -52,10 +52,6 @@ public class confirmarobjetos : MonoBehaviour
             count6.enabled = true;
             count7.enabled = true;
         }
-        else
-        {
-            GameManagers.Instancias.borrar = true;
-        }
     }
     public void desactivar()
     {
@@ -75,6 +71,5 @@ public class confirmarobjetos : MonoBehaviour
         count5.enabled = false;
         count6.enabled = false;
         count7.enabled = false;
-        GameManagers.Instancias.borrar = false;
     }
 }
