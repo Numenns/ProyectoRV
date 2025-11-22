@@ -36,6 +36,7 @@ public class confirmarobjetos : MonoBehaviour
         else if (GameManagers.Instancias.correctos >= 10 && GameManagers.Instancias.incorrectos == 0) { 
             pantalla.color = Color.green;
             GameManagers.Instancias.victoria = true;
+            Scoreboard.Instance.GuardarDatos();
         }
     }
     public void desactivar()

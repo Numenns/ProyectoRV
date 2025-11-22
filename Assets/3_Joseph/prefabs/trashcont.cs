@@ -54,7 +54,7 @@ public class ContadorDeTags : MonoBehaviour
         }
         if (conteoActual >= 2 && GameManagers.Instancias.victoria)
         {
-            GameManagers.Instancias.medallas.Append(medalla);
+            GameManagers.Instancias.medallas.Add(medalla);
         }
     }
 
