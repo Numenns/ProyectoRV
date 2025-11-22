@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 public class ContadorDeTags : MonoBehaviour
 {
     public Vector3 areaSize = new Vector3(1f, 1f, 1f);
-    public TextMeshPro countEr;
-    public TextMeshPro countAc;
     public enum TagSeleccion
     {
         TR1,
@@ -31,6 +29,7 @@ public class ContadorDeTags : MonoBehaviour
     public int ConteoActual => conteoActual;
     public bool SobreLimite => conteoActual >= maxObjetos;
     private int conteoErroneo;
+    public GameObject advertencia;
     
 
     string TagComoString()
@@ -41,55 +40,32 @@ public class ContadorDeTags : MonoBehaviour
 
     private void Update()
     {
-        if (conteoErroneo == 0)
+        if (GameManagers.Instancias.confirmando)
         {
-            GameManagers.Instancias.incorrectos = true;
+            advertencia.SetActive(true);
         }
         else
         {
-            GameManagers.Instancias.incorrectos = false;
+            advertencia.SetActive(false);
         }
-        VaciarBasurero();
-        countEr.text = conteoErroneo.ToString();
-        countAc.text = conteoActual.ToString();
+            
     }
 
     
-
-    public void VaciarBasurero()
-    {
-        if(GameManagers.Instancias.incorrectos == false || GameManagers.Instancias.borrar)
-        {
-            Collider[] objetos = Physics.OverlapBox(transform.position, areaSize / 2f, Quaternion.identity);
-
-            foreach (Collider obj in objetos)
-            {
-                Destroy(obj.gameObject);
-            }
-        }
-        
-    }
-
-    // Para visualizar el área en el editor
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, areaSize);
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(TagComoString()))
         {
             conteoActual++;
+            GameManagers.Instancias.correctos++;
 
-           
             Debug.Log($"Entró {other.name}. Conteo: {conteoActual}/{maxObjetos}");
         }
         else
         {
             conteoErroneo++;
+            GameManagers.Instancias.incorrectos ++;
         }
     }
 
@@ -98,6 +74,7 @@ public class ContadorDeTags : MonoBehaviour
         if (other.CompareTag(TagComoString()))
         {
             conteoActual--;
+            GameManagers.Instancias.correctos--;
             if (conteoActual < 0) conteoActual = 0;
 
            
@@ -106,6 +83,7 @@ public class ContadorDeTags : MonoBehaviour
         else
         {
             conteoErroneo--;
+            GameManagers.Instancias.incorrectos --;
             if (conteoErroneo < 0) conteoErroneo = 0;
         }
     }
