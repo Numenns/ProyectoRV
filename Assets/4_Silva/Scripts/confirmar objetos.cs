@@ -5,7 +5,7 @@ public class confirmarobjetos : MonoBehaviour
 {
     public Material pantalla;
     public TextMeshPro conteo;
-    private bool pausar;
+    private bool pausar=false;
     public AudioSource aud;
     private Color X;
     void Start()
@@ -29,12 +29,11 @@ public class confirmarobjetos : MonoBehaviour
             pausar = true;
             pantalla.color = Color.red;
             conteo.text = GameManagers.Instancias.incorrectos.ToString();
-        }else if(GameManagers.Instancias.correctos < 10)
+        }else if(GameManagers.Instancias.correctos < 10 || GameManagers.Instancias.incorrectos == 0)
         {
             pantalla.color = Color.yellow;
         }
-        else
-        {
+        else if (GameManagers.Instancias.correctos >= 10 || GameManagers.Instancias.incorrectos == 0) { 
             pantalla.color = Color.green;
             GameManagers.Instancias.victoria = true;
         }

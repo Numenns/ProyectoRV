@@ -40,7 +40,7 @@ public class ContadorDeTags : MonoBehaviour
 
     private void Update()
     {
-        if (GameManagers.Instancias.confirmando)
+        if (GameManagers.Instancias.confirmando || conteoErroneo != 0)
         {
             advertencia.SetActive(true);
         }

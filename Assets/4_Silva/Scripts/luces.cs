@@ -18,7 +18,7 @@ public class LightController : MonoBehaviour
     {
         for (int i = 0; i < luces.Length; i++)
         {
-            if (luces[i] != null && luces[i].enabled)
+            if (luces[i] != null)
             {
                 luces[i].enabled = true;
             }
