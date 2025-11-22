@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class GameManagers : MonoBehaviour
     public bool victoria;
     public GameObject panelV;
     [SerializeField] private float espera;
+    public List<string> medallas;
     private void Awake()
     {
         if (Instancias == null)
@@ -24,7 +26,7 @@ public class GameManagers : MonoBehaviour
     }
     void Start()
     {
-        
+        medallas = new List<string>();
     }
 
     // Update is called once per frame

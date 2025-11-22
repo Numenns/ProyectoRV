@@ -16,11 +16,14 @@ public class LightController : MonoBehaviour
     }
     public void EncenderLuces()
     {
-        for (int i = 0; i < luces.Length; i++)
+        foreach (Light luz in luces)
         {
-            luces[i].enabled = true;
+            if (luz != null)
+            {
+                luz.enabled = true;
+                Debug.Log("Encendiendo luz: " + luz.name);
+            }
         }
-
     }
 }
 
