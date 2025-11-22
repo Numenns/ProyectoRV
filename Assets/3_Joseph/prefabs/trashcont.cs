@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -26,6 +27,9 @@ public class ContadorDeTags : MonoBehaviour
     [Header("Solo lectura - cuántos hay dentro")]
     [SerializeField] private int conteoActual = 0;
 
+    [Header("Solo lectura - nombre medalla")]
+    public String medalla;
+
     public int ConteoActual => conteoActual;
     public bool SobreLimite => conteoActual >= maxObjetos;
     private int conteoErroneo;
@@ -48,7 +52,10 @@ public class ContadorDeTags : MonoBehaviour
         {
             advertencia.SetActive(false);
         }
-            
+        if (conteoActual >= 2 && GameManagers.Instancias.victoria)
+        {
+            GameManagers.Instancias.medallas.Append(medalla);
+        }
     }
 
     
@@ -67,6 +74,7 @@ public class ContadorDeTags : MonoBehaviour
             conteoErroneo++;
             GameManagers.Instancias.incorrectos ++;
         }
+
     }
 
     private void OnTriggerExit(Collider other)

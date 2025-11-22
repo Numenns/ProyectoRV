@@ -10025,7 +10025,8 @@ PrefabInstance:
       value: -0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 703244385185758329, guid: 36eff8b49ecdca745894efb1d2ce5f8f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5202211970501327854, guid: 36eff8b49ecdca745894efb1d2ce5f8f, type: 3}
       insertIndex: -1
@@ -23255,6 +23256,17 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1374531715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4128513304257332859, guid: cf7f31a37ba5cba46b19b6316932f898, type: 3}
+  m_PrefabInstance: {fileID: 1936084046962698268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f859e8b81dfd45b4887129e16da7e57b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1375963010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3496433399498934582, guid: a0347876df7d59b4b8912f8f47f4ed6a, type: 3}
@@ -27454,7 +27466,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1076313115522845395}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5241340688305251464, guid: cf7f31a37ba5cba46b19b6316932f898, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf7f31a37ba5cba46b19b6316932f898, type: 3}
@@ -41392,7 +41405,7 @@ PrefabInstance:
     - target: {fileID: 588488801611095747, guid: cf7f31a37ba5cba46b19b6316932f898, type: 3}
       propertyPath: m_OnLeverActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1600995756}
+      objectReference: {fileID: 1374531715}
     - target: {fileID: 588488801611095747, guid: cf7f31a37ba5cba46b19b6316932f898, type: 3}
       propertyPath: m_OnLeverActivate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EncenderLuces
@@ -41458,7 +41471,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1696014881}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5241340688305251464, guid: cf7f31a37ba5cba46b19b6316932f898, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf7f31a37ba5cba46b19b6316932f898, type: 3}
